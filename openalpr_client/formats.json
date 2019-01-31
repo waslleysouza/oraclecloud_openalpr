@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Message",
+        "urn": "urn:com:oracle:iot:device:camera:message",
+        "type": "DATA",
+        "fields": [
+            {
+                "name": "license_plate",
+                "optional": "False",
+                "type": "STRING"
+            },
+            {
+                "name": "confidence",
+                "optional": "False",
+                "type": "NUMBER"
+            },
+            {
+                "name": "picture_url",
+                "optional": "False",
+                "type": "URI"
+            }
+        ]
+    }
+]

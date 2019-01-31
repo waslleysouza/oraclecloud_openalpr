@@ -1,0 +1,9 @@
+{
+    "memory": "1G",
+    "instances": "1",  
+    "environment": {
+        "STORAGE_USER": "username",
+        "STORAGE_PASS": "password",
+        "STORAGE_IDENTITY": "identity_domain"
+    }
+}
