@@ -99,8 +99,8 @@ def _validate(frame, results, device, iot, storage):
             if best_candidate["confidence"] > 80 and best_candidate["matches_template"] > 0:
                 print("Plate #{}: {:7s} ({:.2f}%)".format(i, best_candidate["plate"].upper(), best_candidate["confidence"]))
                 #path = iot.createStorageObject("iot-image", device["name"] + "_" + best_candidate["plate"].upper() + ".jpg", frame)
-                #storage.create_or_replace_object("iot-image", device["name"] + "_" + best_candidate["plate"].upper() + ".jpg", frame)
-                path = datastore["STORAGE_PATH"] + device["name"] + "_" + best_candidate["plate"].upper() + ".jpg"
+                storage.create_or_replace_object(datastore["STORAGE_BUCKET"], device["name"] + "_" + best_candidate["plate"].upper() + ".jpg", frame)
+                path = datastore["STORAGE_PATH"] + datastore["STORAGE_BUCKET"] + device["name"] + "_" + best_candidate["plate"].upper() + ".jpg"
                 data = {
                     "license_plate": best_candidate["plate"].upper(),
                     "confidence": best_candidate["confidence"],

@@ -8,7 +8,8 @@
     "STORAGE_USER": "xxxx",
     "STORAGE_PASS": "xxxx",
     "STORAGE_IDENTITY": "xxxx",
-    "STORAGE_PATH": "https://uscom-east-1.storage.oraclecloud.com/v1/Storage-gse00013844/iot-images/",
+    "STORAGE_BUCKET": "iot-images",
+    "STORAGE_PATH": "https://uscom-east-1.storage.oraclecloud.com/v1/Storage-gse00013844/",
     
     "FRAME_SKIP": 100,
     "COUNTRY": "br",
