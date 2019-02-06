@@ -21,8 +21,9 @@ You can install this application on Windows (PC) or Ubuntu (RaspberryPi)
 2) Unzip the downloaded file.
 3) Update the deployment.json file with your credentials and folders information.
 4) Create a new Python or Anaconda environment: conda create -n openalpr python=3.6
-5) Install the packages of the requirement.txt file using PIP: pip install -r requirement.txt
-6) Start the application: python app.py -s True
+5) Activate your environment: activate openalpr
+6) Install the packages of the requirement.txt file using PIP: pip install -r requirement.txt
+7) Start the application: python app.py -s True
 
 
 ### Oracle IOT configuration
