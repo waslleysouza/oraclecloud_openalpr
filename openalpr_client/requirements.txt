@@ -1,0 +1,4 @@
+pycryptodome
+opencv-contrib-python
+imutils
+oraclecloud

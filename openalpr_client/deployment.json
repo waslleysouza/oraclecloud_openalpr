@@ -1,0 +1,16 @@
+{
+    "IOT_USER": "iot",
+    "IOT_PASS": "welcome1",
+    "IOT_URL": "https://localhost:10443",    
+    "IOT_SHARED_SECRET": "Welcome_1",
+    "IOT_DEVICE_MODEL_URN": "urn:com:oracle:iot:device:camera",
+
+    "STORAGE_USER": "xxxx",
+    "STORAGE_PASS": "xxxx",
+    "STORAGE_IDENTITY": "xxxx",
+    "STORAGE_PATH": "https://uscom-east-1.storage.oraclecloud.com/v1/Storage-gse00013844/iot-images/",
+    
+    "FRAME_SKIP": 100,
+    "COUNTRY": "br",
+    "ALPR_DIR": "D:\\oracle\\workspace\\python\\oraclecloud_openalpr\\openalpr_client\\openalpr_64"
+}

@@ -12,23 +12,28 @@ import platform
 import json
 from argparse import ArgumentParser
 from imutils.video import VideoStream
-from openalpr import Alpr
 from oraclecloud import Iot, Storage
 
+with open("deployment.json", 'r') as f:
+    datastore = json.load(f)
 
-IOT_USER = "xxxx"
-IOT_PASS = "xxxx"
-IOT_URL  = "https://localhost:443"
-IOT_SHARED_SECRET = "Welcome_1"
-IOT_DEVICE_MODEL_URN = "urn:com:oracle:iot:device:camera"
+os.environ['PATH'] = datastore["ALPR_DIR"] + ';' + os.environ['PATH']
+from openalpr import Alpr
+
+
+IOT_USER = datastore["IOT_USER"]
+IOT_PASS = datastore["IOT_PASS"]
+IOT_URL = datastore["IOT_URL"]
+IOT_SHARED_SECRET = datastore["IOT_SHARED_SECRET"]
+IOT_DEVICE_MODEL_URN = datastore["IOT_DEVICE_MODEL_URN"]
 IOT_DEVICE_MODEL_FORMAT_URN = IOT_DEVICE_MODEL_URN + ":message"
 
-STORAGE_USER = "xxxx"
-STORAGE_PASS = "xxxx"
-STORAGE_IDENTITY = "xxxx"
+STORAGE_USER = datastore["STORAGE_USER"]
+STORAGE_PASS = datastore["STORAGE_PASS"]
+STORAGE_IDENTITY = datastore["STORAGE_IDENTITY"]
 
-FRAME_SKIP = 100
-country = "br"
+FRAME_SKIP = datastore["FRAME_SKIP"]
+country = datastore["COUNTRY"]
 config = "openalpr.conf"
 runtime_data = "runtime_data/"
 
@@ -94,8 +99,8 @@ def _validate(frame, results, device, iot, storage):
             if best_candidate["confidence"] > 80 and best_candidate["matches_template"] > 0:
                 print("Plate #{}: {:7s} ({:.2f}%)".format(i, best_candidate["plate"].upper(), best_candidate["confidence"]))
                 #path = iot.createStorageObject("iot-image", device["name"] + "_" + best_candidate["plate"].upper() + ".jpg", frame)
-                storage.create_or_replace_object("iot-image", device["name"] + "_" + best_candidate["plate"].upper() + ".jpg", frame)
-                path = "https://uscom-east-1.storage.oraclecloud.com/v1/Storage-gse00013844/iot-image/" + device["name"] + "_" + best_candidate["plate"].upper() + ".jpg"
+                #storage.create_or_replace_object("iot-image", device["name"] + "_" + best_candidate["plate"].upper() + ".jpg", frame)
+                path = datastore["STORAGE_PATH"] + device["name"] + "_" + best_candidate["plate"].upper() + ".jpg"
                 data = {
                     "license_plate": best_candidate["plate"].upper(),
                     "confidence": best_candidate["confidence"],
